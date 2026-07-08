@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class MovieLibrary {
     private ArrayList<Movie> movies = new ArrayList<>();
@@ -29,6 +30,32 @@ public class MovieLibrary {
                 m.setHaveIWatched(true);
                 return;
             }
+        }
+    }
+
+    public void showWatched() {
+        boolean found = false;
+        for (Movie m : movies) {
+            if (m.getHaveIWatched()) {
+                System.out.println(m);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("You haven't watched any films yet.");
+        }
+    }
+
+    public void showUnwatched() {
+        boolean found = false;
+        for (Movie m : movies) {
+            if (!m.getHaveIWatched()) {
+                System.out.println(m);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("You've watched all your films!");
         }
     }
 
@@ -68,6 +95,35 @@ public class MovieLibrary {
         }
         if (!found) {
             System.out.println("No movies found rated " + rating + " or higher.");
+        }
+    }
+
+    public void filterByYear(int minYear, int maxYear) {
+        boolean found = false;
+        for (Movie m : movies) {
+            if (m.getYear() >= minYear && m.getYear() <= maxYear) {
+                System.out.println(m);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No movies found between " + minYear + " and " + maxYear);
+        }
+    }
+
+    public void sortByRating() {
+        ArrayList<Movie> sorted = new ArrayList<>(movies);
+        sorted.sort(Comparator.comparingInt(Movie::getMyRating).reversed());
+        for (Movie m : sorted) {
+            System.out.println(m);
+        }
+    }
+
+    public void sortByYear() {
+        ArrayList<Movie> sorted = new ArrayList<>(movies);
+        sorted.sort(Comparator.comparingInt(Movie::getYear));
+        for (Movie m : sorted) {
+            System.out.println(m);
         }
     }
 }
