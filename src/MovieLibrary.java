@@ -31,4 +31,43 @@ public class MovieLibrary {
             }
         }
     }
+
+    public void searchByGenre(String genre) {
+        boolean found = false;
+        for (Movie m : movies) {
+            if (m.getGenre().equalsIgnoreCase(genre)) {
+                System.out.println(m);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No movies found in genre: " + genre);
+        }
+    }
+
+    public void searchByDirector(String director) {
+        boolean found = false;
+        for (Movie m : movies) {
+            if (m.getDirector().equalsIgnoreCase(director)) {
+                System.out.println(m);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No movies found by director: " + director);
+        }
+    }
+
+    public void filterByMinimumRating(int rating) {
+        boolean found = false;
+        for (Movie m : movies) {
+            if (m.getMyRating() >= rating) {
+                System.out.println(m);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No movies found rated " + rating + " or higher.");
+        }
+    }
 }
