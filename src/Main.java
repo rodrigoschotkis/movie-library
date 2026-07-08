@@ -1,13 +1,15 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public class Main {
+    public static void main(String[] args) {
+        MovieLibrary myLibrary = new MovieLibrary();
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+        Movie movie1 = new Movie("title", "director", 2000, "Drama", 7, true);
+        Movie movie2 = new Movie("title", "director", 2000, "Drama", 7, true);
+        Movie movie3 = new Movie("title", "director", 2000, "Drama", 7, true);
+
+        myLibrary.addMovie(movie1);
+        myLibrary.addMovie(movie2);
+        myLibrary.addMovie(movie3);
+
+        myLibrary.listAll();
     }
 }
