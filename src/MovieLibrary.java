@@ -18,10 +18,17 @@ public class MovieLibrary {
     }
 
     public void listAll() {
+        int num = 1;
         for (Movie m : movies) {
+            System.out.println("Movie " + num);
             System.out.println(m);
             System.out.println();
+            num++;
         }
+    }
+
+    public boolean isEmpty() {
+        return movies.isEmpty();
     }
 
     public void markAsWatched(String title) {

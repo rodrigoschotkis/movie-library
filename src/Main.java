@@ -132,6 +132,12 @@ public class Main {
                 case 2:
                     break;
                 case 3:
+                    if (myLibrary.isEmpty()) {
+                        System.out.println("\nYou don't have any films added to your list.");
+                    }
+                    System.out.println();
+                    System.out.println("--- YOUR MOVIES ---\n");
+                    myLibrary.listAll();
                     break;
                 case 4:
                     break;

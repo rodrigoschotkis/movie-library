@@ -66,12 +66,11 @@ public class Movie {
     @Override
     public String toString() {
             String watchedText = this.haveIWatched ? "Yes" : "No";
-            return "MOVIE INFO:" + "\nTitle: " +
-                    this.title + "\nDirector: " +
-                    this.director + "\nYear: " +
-                    this.year + "\nGenre: " +
-                    this.genre + "\nMy Rating: " +
-                    this.myRating + "\nHave I watched?: " +
-                    watchedText;
+            return "Title: " + this.title +
+                   "\nDirector: " + this.director +
+                   "\nYear: " + this.year +
+                   "\nGenre: " + this.genre +
+                   "\nMy Rating: " + this.myRating +
+                   "\nHave I watched?: " + watchedText;
     }
 }
