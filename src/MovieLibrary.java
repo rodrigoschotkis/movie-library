@@ -48,7 +48,7 @@ public class MovieLibrary {
                     m.setHaveIWatched(true);
                     return true;
                 } else {
-                    System.out.println("The film "+ m.getTitle() +" is already listed as watched.");
+                    System.out.println("The film "+ m.getTitle() +" was already listed as watched.");
                     return false;
                 }
             }
@@ -59,10 +59,12 @@ public class MovieLibrary {
     }
 
     public void showWatched() {
+        int num = 1;
         boolean found = false;
         for (Movie m : movies) {
             if (m.getHaveIWatched()) {
-                System.out.println(m);
+                System.out.println(num + ". " + m.getTitle() + " (" + m.getMyRating() + "/10)");
+                num++;
                 found = true;
             }
         }
@@ -72,10 +74,12 @@ public class MovieLibrary {
     }
 
     public void showUnwatched() {
+        int num = 1;
         boolean found = false;
         for (Movie m : movies) {
             if (!m.getHaveIWatched()) {
-                System.out.println(m);
+                System.out.println(num + ". " + m.getTitle() + " - " + m.getYear());
+                num++;
                 found = true;
             }
         }
@@ -149,6 +153,14 @@ public class MovieLibrary {
         sorted.sort(Comparator.comparingInt(Movie::getYear));
         for (Movie m : sorted) {
             System.out.println(m);
+        }
+    }
+
+    public void rateMovie(String title, int rating) {
+        for (Movie m : movies) {
+            if (m.getTitle().equalsIgnoreCase(title)) {
+                m.setMyRating(rating);
+            }
         }
     }
 }

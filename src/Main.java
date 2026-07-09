@@ -12,7 +12,7 @@ public class Main {
                  2. Remove a movie
                  3. List all movies
                  4. Mark as watched
-                 5. Search by genre
+                 5. Search/filter movies
                  6. Quit
                  Choose an option:\s""";
 
@@ -166,6 +166,7 @@ public class Main {
                     }
 
                     String titleMov;
+                    boolean added = false;
 
                     System.out.println("\n--- YOUR MOVIES ---");
                     myLibrary.listAllOnlyTitles();
@@ -174,16 +175,104 @@ public class Main {
                     titleMov = scan.nextLine();
                     if (myLibrary.markAsWatched(titleMov)) {
                         System.out.println(titleMov + " was successfully marked as watched.");
+                        added = true;
                     }
+
+                    if (!added) {
+                        break;
+                    }
+
+                    int ratingMov;
+                    while (true) {
+                        System.out.print("How do you rate the movie? (1 to 10): ");
+                        String input = scan.nextLine();
+                        try {
+                            ratingMov = Integer.parseInt(input);
+                            if (ratingMov < 1 || ratingMov > 10) {
+                                System.out.println("Rate it between 1 and 10.");
+                                continue;
+                            }
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("That's not a valid number.");
+                        }
+                    }
+
+                    myLibrary.rateMovie(titleMov, ratingMov);
 
                     break;
                 case 5:
+                    if (myLibrary.isEmpty()) {
+                        System.out.println("\nYou don't have any films added to your list.");
+                        break;
+                    }
+
+                    filterMenu(scan, myLibrary);
                     break;
                 case 6:
+                    System.out.println("Program finished.");
                     break;
                 default:
                     System.out.println("Type a number between 1 and 6.");
             }
         } while (menu != 6);
+    }
+
+    public static void filterMenu(Scanner scan, MovieLibrary myLibrary) {
+        int menu = 0;
+        String menuText = """
+                 How would you like to search/filter?
+                 1. Search by director
+                 2. Search by genre
+                 3. Filter by minimum rating
+                 4. Filter by year
+                 5. Show movies watched
+                 6. Show movies not watched
+                 7. Return to menu
+                 Choose an option:\s""";
+
+        do {
+            System.out.print(menuText);
+            if (scan.hasNextInt()) {
+                menu = scan.nextInt();
+                scan.nextLine();
+            } else {
+                System.out.println("Please enter an integer.");
+                scan.nextLine();
+                continue;
+            }
+
+            switch (menu) {
+                case 1: {
+                    break;
+                }
+                case 2: {
+                    break;
+                }
+                case 3: {
+                    break;
+                }
+                case 4: {
+                    break;
+                }
+                case 5: {
+                    System.out.println("\n--- MOVIES WATCHED ---");
+                    myLibrary.showWatched();
+                    System.out.println();
+                    break;
+                }
+                case 6: {
+                    System.out.println("\n--- MOVIES NOT WATCHED ---");
+                    myLibrary.showUnwatched();
+                    System.out.println();
+                    break;
+                }
+                case 7: {
+                    break;
+                }
+                default:
+                    System.out.println("Type a number between 1 and 7.");
+            }
+        } while (menu != 7);
     }
 }
