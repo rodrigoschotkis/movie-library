@@ -244,9 +244,42 @@ public class Main {
 
             switch (menu) {
                 case 1: {
+                    String director;
+                    do {
+                        System.out.print("Type the Director's name: ");
+                        director = scan.nextLine();
+                        if (director.trim().isEmpty()) {
+                            System.out.println("The director's name can't be empty.");
+                            continue;
+                        }
+                        if (director.matches(".*\\d.*")) {
+                            System.out.println("No numbers allowed.");
+                            continue;
+                        }
+                        break;
+                    } while (true);
+
+                    myLibrary.searchByDirector(director);
                     break;
                 }
                 case 2: {
+                    String genre;
+                    do {
+                        System.out.print("Type the Genre of the movie: ");
+                        genre = scan.nextLine();
+                        if (genre.trim().isEmpty()) {
+                            System.out.println("The genre's name can't be empty.");
+                            continue;
+                        }
+                        if (genre.matches(".*\\d.*")) {
+                            System.out.println("No numbers allowed.");
+                            continue;
+                        }
+                        break;
+                    } while (true);
+
+                    myLibrary.searchByGenre(genre);
+
                     break;
                 }
                 case 3: {

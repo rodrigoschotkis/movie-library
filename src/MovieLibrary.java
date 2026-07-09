@@ -90,9 +90,11 @@ public class MovieLibrary {
 
     public void searchByGenre(String genre) {
         boolean found = false;
+        int num = 1;
         for (Movie m : movies) {
             if (m.getGenre().equalsIgnoreCase(genre)) {
-                System.out.println(m);
+                System.out.println(num + ". " + m.getTitle());
+                num++;
                 found = true;
             }
         }
@@ -103,9 +105,11 @@ public class MovieLibrary {
 
     public void searchByDirector(String director) {
         boolean found = false;
+        int num = 1;
         for (Movie m : movies) {
             if (m.getDirector().equalsIgnoreCase(director)) {
-                System.out.println(m);
+                System.out.println(num + ". " + m.getTitle());
+                num++;
                 found = true;
             }
         }
