@@ -160,6 +160,22 @@ public class Main {
                     myLibrary.listAll();
                     break;
                 case 4:
+                    if (myLibrary.isEmpty()) {
+                        System.out.println("\nYou don't have any films added to your list.");
+                        break;
+                    }
+
+                    String titleMov;
+
+                    System.out.println("\n--- YOUR MOVIES ---");
+                    myLibrary.listAllOnlyTitles();
+
+                    System.out.print("\nEnter the title of the film you'd like to mark as watched: ");
+                    titleMov = scan.nextLine();
+                    if (myLibrary.markAsWatched(titleMov)) {
+                        System.out.println(titleMov + " was successfully marked as watched.");
+                    }
+
                     break;
                 case 5:
                     break;

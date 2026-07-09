@@ -41,13 +41,21 @@ public class MovieLibrary {
         return movies.isEmpty();
     }
 
-    public void markAsWatched(String title) {
+    public boolean markAsWatched(String title) {
         for (Movie m : movies) {
             if (m.getTitle().equalsIgnoreCase(title)) {
-                m.setHaveIWatched(true);
-                return;
+                if (!m.getHaveIWatched()) {
+                    m.setHaveIWatched(true);
+                    return true;
+                } else {
+                    System.out.println("The film "+ m.getTitle() +" is already listed as watched.");
+                    return false;
+                }
             }
         }
+
+        System.out.println("No movie with the title " + title + " was found.");
+        return false;
     }
 
     public void showWatched() {
