@@ -130,13 +130,33 @@ public class Main {
 
                     break;
                 case 2:
+                    if (myLibrary.isEmpty()) {
+                        System.out.println("\nYou don't have any films added to your list.");
+                        break;
+                    }
+
+                    String titleMovie;
+
+                    System.out.println("\nOption selected: 2. Remove a movie");
+                    System.out.println("\n--- YOUR MOVIES ---");
+                    myLibrary.listAllOnlyTitles();
+
+                    System.out.print("\nEnter the title of the film you'd like to remove: ");
+                    titleMovie = scan.nextLine();
+                    if (myLibrary.removeMovie(titleMovie)) {
+                        System.out.println(titleMovie + " was successfully removed.");
+                    } else {
+                        System.out.println("No movie with the title " + titleMovie + " was found.");
+                    }
+
                     break;
                 case 3:
                     if (myLibrary.isEmpty()) {
                         System.out.println("\nYou don't have any films added to your list.");
+                        break;
                     }
                     System.out.println();
-                    System.out.println("--- YOUR MOVIES ---\n");
+                    System.out.println("--- YOUR MOVIES ---");
                     myLibrary.listAll();
                     break;
                 case 4:

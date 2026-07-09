@@ -8,13 +8,14 @@ public class MovieLibrary {
         movies.add(movie);
     }
 
-    public void removeMovie(String title) {
+    public boolean removeMovie(String title) {
         for (Movie m: movies) {
             if (m.getTitle().equalsIgnoreCase(title)) {
                 movies.remove(m);
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     public void listAll() {
@@ -23,6 +24,15 @@ public class MovieLibrary {
             System.out.println("Movie " + num);
             System.out.println(m);
             System.out.println();
+            num++;
+        }
+    }
+
+    public void listAllOnlyTitles() {
+        int num = 1;
+        for (Movie m : movies) {
+            System.out.print(num + ". ");
+            System.out.println(m.getTitle());
             num++;
         }
     }
