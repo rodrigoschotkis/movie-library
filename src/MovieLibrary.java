@@ -139,23 +139,7 @@ public class MovieLibrary {
             System.out.println("No movies found between " + minYear + " and " + maxYear);
         }
     }
-
-    public void sortByRating() {
-        ArrayList<Movie> sorted = new ArrayList<>(movies);
-        sorted.sort(Comparator.comparingInt(Movie::getMyRating).reversed());
-        for (Movie m : sorted) {
-            System.out.println(m);
-        }
-    }
-
-    public void sortByYear() {
-        ArrayList<Movie> sorted = new ArrayList<>(movies);
-        sorted.sort(Comparator.comparingInt(Movie::getYear));
-        for (Movie m : sorted) {
-            System.out.println(m);
-        }
-    }
-
+    
     public void rateMovie(String title, int rating) {
         for (Movie m : movies) {
             if (m.getTitle().equalsIgnoreCase(title)) {
