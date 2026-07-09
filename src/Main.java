@@ -250,9 +250,66 @@ public class Main {
                     break;
                 }
                 case 3: {
+                    int minRating;
+                    while (true) {
+                        System.out.print("Enter the minimum rating: ");
+                        String input = scan.nextLine();
+                        try {
+                            minRating = Integer.parseInt(input);
+                            if (minRating < 1 || minRating > 10) {
+                                System.out.println("Type a number between 1 and 10.");
+                                continue;
+                            }
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("That's not a valid number.");
+                        }
+                    }
+
+                    myLibrary.filterByMinimumRating(minRating);
+
                     break;
                 }
                 case 4: {
+                    int currentYear = Year.now().getValue();
+                    int minYear;
+                    int maxYear;
+
+                    while (true) {
+                        System.out.print("Enter the earliest year: ");
+                        String input = scan.nextLine();
+                        try {
+                            minYear = Integer.parseInt(input);
+                            if (minYear < 1888 || minYear > currentYear) {
+                                System.out.println("Type a year between " + 1888 + " and " + currentYear + ".");
+                                continue;
+                            }
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("That's not a valid number.");
+                        }
+                    }
+
+                    while (true) {
+                        System.out.print("Enter the latest year: ");
+                        String input = scan.nextLine();
+                        try {
+                            maxYear = Integer.parseInt(input);
+                            if (maxYear < 1888 || maxYear > currentYear) {
+                                System.out.println("Type a year between " + 1888 + " and " + currentYear + ".");
+                                continue;
+                            }
+                            if (maxYear < minYear) {
+                                System.out.println("The latest year can't be earlier than the earliest year.");                                continue;
+                            }
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("That's not a valid number.");
+                        }
+                    }
+
+                    myLibrary.filterByYear(minYear, maxYear);
+
                     break;
                 }
                 case 5: {

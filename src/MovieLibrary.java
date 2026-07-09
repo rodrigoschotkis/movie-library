@@ -116,9 +116,11 @@ public class MovieLibrary {
 
     public void filterByMinimumRating(int rating) {
         boolean found = false;
+        int num = 1;
         for (Movie m : movies) {
             if (m.getMyRating() >= rating) {
-                System.out.println(m);
+                System.out.println(num + ". " + m.getTitle());
+                num++;
                 found = true;
             }
         }
@@ -131,15 +133,15 @@ public class MovieLibrary {
         boolean found = false;
         for (Movie m : movies) {
             if (m.getYear() >= minYear && m.getYear() <= maxYear) {
-                System.out.println(m);
+                System.out.println(m.getTitle());
                 found = true;
             }
         }
         if (!found) {
-            System.out.println("No movies found between " + minYear + " and " + maxYear);
+            System.out.println("No movies found between " + minYear + " and " + maxYear + ".");
         }
     }
-    
+
     public void rateMovie(String title, int rating) {
         for (Movie m : movies) {
             if (m.getTitle().equalsIgnoreCase(title)) {
