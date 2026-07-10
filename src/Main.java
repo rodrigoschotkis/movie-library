@@ -221,7 +221,7 @@ public class Main {
     public static void filterMenu(Scanner scan, MovieLibrary myLibrary) {
         int menu = 0;
         String menuText = """
-                 How would you like to search/filter?
+                 \nHow would you like to search/filter?
                  1. Search by director
                  2. Search by genre
                  3. Filter by minimum rating
@@ -259,6 +259,7 @@ public class Main {
                         break;
                     } while (true);
 
+                    System.out.println("\nMovies directed by " + director + ":");
                     myLibrary.searchByDirector(director);
                     break;
                 }
@@ -278,6 +279,7 @@ public class Main {
                         break;
                     } while (true);
 
+                    System.out.println("\nMovies with the genre of " + genre + ":");
                     myLibrary.searchByGenre(genre);
 
                     break;
@@ -298,7 +300,7 @@ public class Main {
                             System.out.println("That's not a valid number.");
                         }
                     }
-
+                    System.out.println("\nMovies with a minimum rating of " + minRating + ":");
                     myLibrary.filterByMinimumRating(minRating);
 
                     break;
@@ -340,7 +342,7 @@ public class Main {
                             System.out.println("That's not a valid number.");
                         }
                     }
-
+                    System.out.println("\nMovies between " + minYear + " and " + maxYear + ":");
                     myLibrary.filterByYear(minYear, maxYear);
 
                     break;
